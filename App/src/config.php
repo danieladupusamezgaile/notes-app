@@ -4,7 +4,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'daniela');
 define('DB_PASS', '2850');
-define('DB_NAME', 'fitnessapp');
+define('DB_NAME', 'notes');
 
 // hosting
 // define('DB_HOST', 'localhost');

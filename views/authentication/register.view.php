@@ -19,7 +19,7 @@
                             <div class="form-text text-danger">
                                 <?= $databaseErr ?? '' ?>
                             </div>
-                            <form method="POST" action="/register" class="needs-validation" novalidate=""
+                            <form method="post" action="/register" class="needs-validation" novalidate=""
                                 autocomplete="off">
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="name">Name</label>
