@@ -11,6 +11,7 @@ class ComposerStaticInit43352205dac22cb81499eef15915664e
         array (
             'App\\Src\\' => 8,
             'App\\Model\\' => 10,
+            'App\\Controllers\\Authentication\\' => 31,
             'App\\Controllers\\' => 16,
         ),
     );
@@ -23,6 +24,10 @@ class ComposerStaticInit43352205dac22cb81499eef15915664e
         'App\\Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App/model',
+        ),
+        'App\\Controllers\\Authentication\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/controllers/authentication',
         ),
         'App\\Controllers\\' => 
         array (

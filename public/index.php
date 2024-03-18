@@ -1,6 +1,6 @@
 <?php
 
-// session_start();
+session_start();
 
 use App\Model\Database;
 use App\Src\Router;

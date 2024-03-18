@@ -11,3 +11,12 @@ define('DB_NAME', 'fitnessapp');
 // define('DB_USER', 'id21927207_daniela');
 // define('DB_PASS', 'Danielaswebsite1!');
 // define('DB_NAME', 'id21927207_danielasdatabase');
+
+// CREATE TABLE `users` (
+//     `id` int NOT NULL AUTO_INCREMENT,
+//     `name` varchar(255) NOT NULL,
+//     `email` varchar(255) NOT NULL,
+//     `password` varchar(255) NOT NULL,
+//     PRIMARY KEY (`id`),
+//     UNIQUE KEY `email_UNIQUE` (`email`)
+// );

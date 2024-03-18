@@ -3,7 +3,8 @@
         "psr-4": {
             "App\\Controllers\\":"App/controllers/",
             "App\\Model\\":"App/model/",
-            "App\\Src\\":"App/src/"
+            "App\\Src\\":"App/src/",
+            "App\\Controllers\\Authentication\\":"App/controllers/authentication/"
         }
     }
 }
