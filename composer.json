@@ -4,7 +4,8 @@
             "App\\Controllers\\":"App/controllers/",
             "App\\Model\\":"App/model/",
             "App\\Src\\":"App/src/",
-            "App\\Controllers\\Authentication\\":"App/controllers/authentication/"
+            "App\\Controllers\\Authentication\\":"App/controllers/authentication/",
+            "App\\Controllers\\Notes\\":"App/controllers/notes/"
         }
     }
 }

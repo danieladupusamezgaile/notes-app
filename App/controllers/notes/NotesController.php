@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Controllers\Authentication;
+namespace App\Controllers\Notes;
 
 use App\Model\Controller;
 use App\Src\Validator;
 
-class RegisterController extends Controller
+class NotesController extends Controller
 {
     protected $view;
     private $data = [];
     private $errors = [];
     public function index()
     {
-        $this->view("authentication/register", ['authenticateActive' => 'active']);
+        $this->view("notes/index", ['notesActive' => 'active']);
     }
     public function validate()
     {

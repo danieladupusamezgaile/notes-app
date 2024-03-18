@@ -11,6 +11,7 @@ class ComposerStaticInit43352205dac22cb81499eef15915664e
         array (
             'App\\Src\\' => 8,
             'App\\Model\\' => 10,
+            'App\\Controllers\\Notes\\' => 22,
             'App\\Controllers\\Authentication\\' => 31,
             'App\\Controllers\\' => 16,
         ),
@@ -24,6 +25,10 @@ class ComposerStaticInit43352205dac22cb81499eef15915664e
         'App\\Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App/model',
+        ),
+        'App\\Controllers\\Notes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/controllers/notes',
         ),
         'App\\Controllers\\Authentication\\' => 
         array (
