@@ -26,8 +26,7 @@ class AuthenticateController extends Controller
             return false;
         }
 
-        $sql = "SELECT * FROM users WHERE email=?";
-        $user = $this->conn->execute_query($sql, [$_POST['email']])->fetch_assoc();
+        $user = $this->select("SELECT * FROM users WHERE email=?", [$_POST['email']]);
 
         if (empty($user)) {
             $this->errors['emailErr'] = 'User with this email not registered';
@@ -39,7 +38,7 @@ class AuthenticateController extends Controller
             return false;
         }
 
-        $this->data['email'] = $_POST['email'];
+        $this->data['id'] = $user['id'];
 
         return true;
     }
@@ -50,12 +49,9 @@ class AuthenticateController extends Controller
             die();
         }
 
-        $sql = "SELECT id FROM users WHERE email=?";
-        $user = $this->conn->execute_query($sql, [$_POST['email']])->fetch_assoc();
-
         // create session
         $_SESSION['user'] = [
-            'id' => $user['id'],
+            'id' => $this->data['id'],
             'timeout' => time()
         ];
 

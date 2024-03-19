@@ -48,10 +48,7 @@ class RegisterController extends Controller
 
         extract($this->data);
 
-        $sql = "SELECT * FROM users WHERE email=?";
-        $user = $this->conn->execute_query($sql, [$email])->fetch_assoc();
-
-        if (!empty($user)) {
+        if (!empty($this->select("SELECT * FROM users WHERE email=?", [$email]))) {
             $this->errors['emailErr'] = "User with this email already exists";
             $this->view('authentication/register', $this->errors);
             die();
