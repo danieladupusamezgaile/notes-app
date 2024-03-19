@@ -12,7 +12,7 @@ class Database
     public function connect()
     {
         // Create connection
-        $this->conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, '88');
+        $this->conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // Check connection
         if ($this->conn->connect_error) {

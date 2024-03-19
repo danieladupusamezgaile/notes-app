@@ -12,29 +12,31 @@ class NotesController extends Controller
     private $errors = [];
     public function index()
     {
-        $this->view("notes/index", ['notesActive' => 'active']);
+        $notes = $this->selectall("SELECT * FROM notes WHERE user_id=?", [$_SESSION['user']['id']]);
+        $data = [
+            'notes' => $notes,
+            'notesActive' => 'active'
+        ];
+        // if (empty($user)) {
+        //     $this->errors['emailErr'] = 'User with this email not registered';
+        //     return false;
+        // }
+        $this->view("notes/index", $data);
+    }
+    function create(){
+        $this->view("notes/create", ['notesActive' => 'active']);
     }
     public function validate()
     {
         // Validate empty inputs
-        if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
+        if (empty($_POST['title']) || empty($_POST['body'])) {
             $this->errors['emptyErr'] = 'Please, fill out all fields';
             return false;
         }
 
-        // Validate inputs
-        if (!Validator::letterSpaceDash($_POST['name'])) $this->errors['nameErr'] = 'Please, use only letters';
-        if (!Validator::email($_POST['email'])) $this->errors['emailErr'] = 'Please, enter valid email address';
-        if (!Validator::password($_POST['password'])) $this->errors['passwordErr'] = 'Please, enter valid password';
-
-        if (!empty($this->errors)) {
-            return false;
-        }
-
         // Save inputs
-        $this->data['name'] = $_POST['name'];
-        $this->data['email'] = $_POST['email'];
-        $this->data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $this->data['title'] = htmlspecialchars($_POST['title']);
+        $this->data['body'] = htmlspecialchars($_POST['body']);
 
         return true;
     }
@@ -42,31 +44,22 @@ class NotesController extends Controller
     {
         // Validate data
         if (!$this->validate()) {
-            $this->view('authentication/register', $this->errors);
+            $this->view('notes/create', $this->errors);
             die();
         }
 
         extract($this->data);
 
-        $sql = "SELECT * FROM users WHERE email=?";
-        $user = $this->conn->execute_query($sql, [$email])->fetch_assoc();
-
-        if (!empty($user)) {
-            $this->errors['emailErr'] = "User with this email already exists";
-            $this->view('authentication/register', $this->errors);
-            die();
-        }
-
-        $st = $this->conn->prepare("INSERT INTO users (name, email, password) VALUES (?,?,?)");
-        $st->bind_param("sss", $name, $email, $password);
+        $st = $this->conn->prepare("INSERT INTO notes (title, body, user_id) VALUES (?,?,?)");
+        $st->bind_param("sss", $title, $body, $_SESSION['user']['id']);
 
         if (!$st->execute()) { // === bool
             $this->errors['databseErr'] = "An error occured, while inserting data";
-            $this->view('authentication/register', $this->errors);
+            $this->view('notes/create', $this->errors);
             die();
         }
 
-        header("Location: /authenticate");
+        header("Location: /notes");
         die();
     }
 }
