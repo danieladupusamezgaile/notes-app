@@ -11,3 +11,7 @@ $router->get("/logout", 'App\Controllers\Authentication\\AuthenticateController'
 $router->get("/notes", 'App\Controllers\Notes\\NotesController', 'index');
 $router->get("/notes/create", 'App\Controllers\Notes\\NotesController', 'create');
 $router->post("/notes/create", 'App\Controllers\Notes\\NotesController', 'store');
+
+$router->post("/notes/delete", 'App\Controllers\Notes\\NotesController', 'delete');
+$router->get("/notes/edit", 'App\Controllers\Notes\\NotesController', 'edit');
+$router->post("/notes/update", 'App\Controllers\Notes\\NotesController', 'update');

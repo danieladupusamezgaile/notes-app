@@ -11,11 +11,11 @@
           <a class="nav-link" href="/">My Notes</a>
         </li> -->
         <li class="nav-item">
-        <?php if ($_SESSION['user'] ?? false): ?>
-          <a class="nav-link <?= $notesActive ?? '' ?>" href="/notes">My Notes</a>
+          <?php if ($_SESSION['user'] ?? false): ?>
+            <a class="nav-link <?= $notesActive ?? '' ?>" href="/notes">Notes</a>
           <?php else: ?>
             <a class="nav-link <?= $notesActive ?? '' ?>" href="/">Notes</a>
-        <?php endif ?>
+          <?php endif ?>
         </li>
         <li class="nav-item">
           <?php if ($_SESSION['user'] ?? false): ?>
@@ -23,6 +23,11 @@
           <?php else: ?>
             <a class="nav-link <?= $authenticateActive ?? '' ?>" href="/authenticate">Sign In</a>
           <?php endif ?>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">
+            <?= isset ($_SESSION['user']['id']) ? 'Logged in as: ' . $_SESSION['user']['id'] : '' ?>
+          </a>
         </li>
       </ul>
     </div>
