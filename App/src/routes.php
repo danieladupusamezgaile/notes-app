@@ -13,5 +13,8 @@ $router->get("/notes/create", 'App\Controllers\Notes\\NotesController', 'create'
 $router->post("/notes/create", 'App\Controllers\Notes\\NotesController', 'store');
 
 $router->post("/notes/delete", 'App\Controllers\Notes\\NotesController', 'delete');
+$router->post("/note/delete", 'App\Controllers\Notes\\NotesController', 'deleteone');
+
 $router->get("/notes/edit", 'App\Controllers\Notes\\NotesController', 'edit');
 $router->post("/notes/update", 'App\Controllers\Notes\\NotesController', 'update');
+$router->get("/notes/show", 'App\Controllers\Notes\\NotesController', 'show');

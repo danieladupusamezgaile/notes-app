@@ -86,6 +86,22 @@ class NotesController extends Controller
         header("Location: /notes");
         die();
     }
+    public function deleteone()
+    {
+        var_dump("NotesController::deleteone()<br>");
+
+        $st = $this->conn->prepare("DELETE FROM notes WHERE  id=?");
+        $st->bind_param("s", $_POST['id']);
+
+        if (!$st->execute()) { // === bool
+            $this->errors['databseErr'] = "An error occured, while deleting data";
+            $this->view('notes/index', $this->errors);
+            die();
+        }
+
+        header("Location: /notes");
+        die();
+    }
     public function edit()
     {
         if (!isset ($_SESSION['user'])) {
@@ -116,7 +132,14 @@ class NotesController extends Controller
             die();
         }
 
-        header("Location: /notes/edit?id=".$_POST['id']);
+        header("Location: /notes/edit?id=" . $_POST['id']);
         die();
+    }
+    public function show()
+    {
+        $note = $this->select("SELECT * FROM notes WHERE id=? AND user_id=?", [$_GET['id'], $_SESSION['user']['id']]);
+        if ($note ?? false) {
+            $this->view("notes/show", $note);
+        }
     }
 }
