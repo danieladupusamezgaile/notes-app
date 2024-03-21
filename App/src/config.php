@@ -20,3 +20,13 @@ define('DB_NAME', 'notes');
 //     PRIMARY KEY (`id`),
 //     UNIQUE KEY `email_UNIQUE` (`email`)
 // );
+
+// CREATE TABLE `notes` (
+//     `id` int NOT NULL AUTO_INCREMENT,
+//     `title` varchar(45) NOT NULL,
+//     `body` varchar(255) NOT NULL,
+//     `user_id` int NOT NULL,
+//     PRIMARY KEY (`id`),
+//     KEY `userid_fk_idx` (`user_id`),
+//     CONSTRAINT `userid_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+//   )
