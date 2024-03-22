@@ -10,9 +10,9 @@ class AuthenticateController extends Controller
     protected $view;
     private $data = [];
     private $errors = [];
-    public function index()
+    public function index($view)
     {
-        $this->view("authentication/authenticate", ['authenticateActive' => 'active']);
+        $this->view($view, ['authenticateActive' => 'active']);
     }
     public function validate()
     {

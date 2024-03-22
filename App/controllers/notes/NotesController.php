@@ -10,8 +10,9 @@ class NotesController extends Controller
     protected $view;
     private $data = [];
     private $errors = [];
-    public function index()
+    public function index($view)
     {
+        // $this->view($view);
         if (!isset ($_SESSION['user']['id'])) {
             $this->view("notes/index");
             die();
@@ -22,7 +23,7 @@ class NotesController extends Controller
             'notes' => $notes,
             'notesActive' => 'active'
         ];
-        $this->view("notes/index", $data);
+        $this->view($view, $data);
     }
     function create()
     {
